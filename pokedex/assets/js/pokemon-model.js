@@ -4,12 +4,13 @@ class Pokemon{
     pokemonTypes = [];
     pokemonType;
     picture;
-
 }
 
-class PokemonDetail{
-    id;
-    name;
-    is_main_series;
-    generation; 
+class PokemonAtributes{
+    attack;
+    defense;
+    hp;
+    speed;
+    specialAttack; 
+    specialDefense;
 }

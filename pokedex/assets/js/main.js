@@ -4,9 +4,6 @@ const limit = 10;
 let offset = 0;
 const maxRecord = 151;
 
-
-fetch('https://pokeapi.co/api/v2/machine/1')
-
 function convertPokemonLi(pokemon){
     return `
     <li class="pokemon ${pokemon.pokemonType}">
@@ -23,11 +20,24 @@ function convertPokemonLi(pokemon){
     `
 }
 
+
+
+
 function loadPokemonsItems(offset,limit){
-pokeapi.getPokemons(offset,limit).then( (pokemons = []) => {
+    pokeapi.getPokemons(offset,limit).then( (pokemons = []) => {
     pokemonList.innerHTML += pokemons.map(convertPokemonLi).join(' ')
+    pokemonList.innerHTML+= pokemons.map(addStats).join(' ')
    })}
 
+function loadPokemonsStats(offset,limit){
+    for(let i= offset; i<= limit;i++){
+        if(i ==0 ){
+            continue
+        }    
+        getPokemonStats(i)
+            }
+}
+    
    loadPokemonsItems(offset,limit)
 
 loadMoreButton.addEventListener('click', () => {
@@ -43,3 +53,5 @@ loadMoreButton.addEventListener('click', () => {
     }
 
 })
+
+
